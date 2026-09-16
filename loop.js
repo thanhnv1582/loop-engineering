@@ -26,6 +26,8 @@ Inspect src/order.js and make the necessary implementation change.
 
 Rules:
 - Do NOT modify anything in the test/ directory.
+- Do NOT read any file inside the test/ directory. You only know the
+  requirements from this prompt and from the failure output above (if any).
 - Do NOT run tests yourself.
 - Only modify the implementation.
 - Stop after making the code change.`;
