@@ -41,6 +41,14 @@ function runClaude(prompt) {
   );
 }
 
+function showDiff() {
+  const diff = execFileSync('git', ['diff', '--', 'src/order.js'], {
+    encoding: 'utf-8',
+  });
+
+  console.log(diff ? diff : '(no changes)');
+}
+
 function runTests() {
   try {
     const output = execFileSync('npm', ['test'], {
@@ -73,7 +81,10 @@ function main() {
     console.log('\n[1] Claude: inspect and modify code...');
     runClaude(buildPrompt(attempt, failureOutput));
 
-    console.log('\n[2] Verifier: running npm test...');
+    console.log('\n[2] Diff: what Claude changed...');
+    showDiff();
+
+    console.log('\n[3] Verifier: running npm test...');
 
     const result = runTests();
 
